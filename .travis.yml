@@ -10,9 +10,9 @@ env:
   - ARCH=posix CONF=lto
 before_install:
   - echo $TRAVIS_OS_NAME
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then wget https://s3.amazonaws.com/travis-otp-releases/binaries/ubuntu/$(lsb_release -rs)/x86_64/erlang-17.5.tar.bz2; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then wget https://s3.amazonaws.com/travis-otp-releases/binaries/ubuntu/$(lsb_release -rs)/x86_64/erlang-17.5-nonroot.tar.bz2; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then mkdir ~/otp; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then tar xf erlang-17.5.tar.bz2 -C ~/otp/; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then tar xf erlang-17.5-nonroot.tar.bz2 -C ~/otp/; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then source $HOME/otp/17.5/activate; fi
 script:
   - PATH=/Volumes/ElfGCC/usr/local/gcc-4.8.1-for-linux64/bin:$PATH travis_wait 60 make -j2 play ARCH=$ARCH CONF=$CONF
